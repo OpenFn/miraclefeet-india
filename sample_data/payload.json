@@ -1,0 +1,11 @@
+{
+  "configuration":{
+    "loginUrl": "https://test.salesforce.com/",
+		"username":"aleksa@openfn.org.mfindia",
+		"password":"openindia2020",
+		"securityToken": "LGU96kXoQ0EdQQzVcCmrsQrE"
+  },
+  "data":{
+  
+  }
+}

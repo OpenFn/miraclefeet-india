@@ -1,46 +1,70 @@
-//** New Job to map CAST custom mobile app data to Salesforce **//
+alterState(state => {
+  // create a cleaning function that removes props with '-' values
+  function clean(obj) {
+    for (var propName in obj) {
+      if (obj[propName] === '-' || obj[propName] === null) {
+        delete obj[propName];
+      }
+    }
+    return obj;
+  }
 
+  // format for bulk upserts
+  state.data = {
+    clinics: state.data.Clinic.map(c => {
+      delete c.CreatedById;
+      delete c.LastModifiedById;
+      c.Name = 'MFI Clinic';
+      return clean(c);
+    }),
+    patients: state.data.Patient.map(p => {
+      p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
+      delete p.CAST_Patient_ID__c;
 
-//upsert Clinics
-each(
-  dataPath("$.Clinic[*]"),
-  upsert("Account", "CAST_Location_ID__c", fields(
-    field("CAST_Location_ID__c", dataValue("CAST_Location_ID__c")),
-    field("Name", "MFI Clinic"), //Ask MFI re: naming convention
-    field("Zone__c", dataValue("Zone__c")),
-    field("Start_Date__c", dataValue("Start_Date__c")),
-    field("Active__c", dataValue("Active__c"))
-  ))
-)
-//--> CHANGE TO BULK UPSERT
-//upsert Patients
-each(
-  dataPath("$.Patient[*]"),
-  upsert("Contact", "CommCare_Case_ID__c", fields(
-    field("CommCare_Case_ID__c", dataValue("Patient_ID__c")), //added ExtId
-    relationship('Account', 'CAST_Location_ID__c', dataValue('CAST_Location_ID__c')), //added ExtId
-    field("Referral_Source_Doctor_Name__c", (state) => {
-      return (dataValue("Referral_Source_Doctor_Name__c")(state) === '-' ? '' : dataValue("Referral_Source_Doctor_Name__c")(state))
+      // TODO: Ask MF why clinics are sent in an array, if there will be more
+      // than one, and how to link patients to clinics.
+      p['Clinic__r.Unique_Clinic_Identifier__c'] = CAST_Location_ID__c;
+      delete p.CAST_Patient_ID__c;
+
+      return clean(p);
     }),
-    //field("Neighborhood__c", ...)
-    //insert other direct field mappings as line above, AND...
-    //add logic so that across all mappings return blank/no value specified => (dataValue==='-' ? '' : value)
-    //see what I did in L21-22 for this logic
-  ))
-)
-//--> CHANGE TO BULK UPSERT
-//upsert Visits
-each(
-  dataPath("$.Visit[*]"),
-  upsert("Visit_new__c", "gciclubfootommcare_case_id__c", fields(
-    field("gciclubfootommcare_case_id__c", dataValue("gciclubfootommcare_case_id__c")),
-    relationship('Patient__r', "CommCare_Case_ID__c", dataValue("Patient_ID__c")), //added ExtId
-    field("Referral_Type__c", (state) => {
-      return (dataValue("Referral_Type__c")(state) === '-' ? '' : dataValue("Referral_Type__c")(state))
+    visits: state.data.Visit.map(v => {
+      v['Patient__r.CommCare_Case_ID__c'] = v.Patient_ID__c;
+      delete v.Patient_ID__c;
+      return clean(v);
     }),
-    //field("Case_Closed_Date__c", ...)
-    //insert other direct field mappings as line above, AND...
-    //add logic so that across all mappings return blank if no value specified => (dataValue==='-' ? '' : value)
-    //see what I did in L37-38 for this logic
-  ))
-)
+  };
+
+  // cleanup
+  delete state.data.Clinic;
+  delete state.data.Patient;
+  delete state.data.Visit;
+
+  // return state for next opertaion in job
+  return state;
+});
+
+bulk(
+  'Account',
+  'upsert',
+  { extIdField: 'CAST_Location_ID__c', failOnError: true, allowNoOp: true },
+  dataValue('clinics')
+);
+
+bulk(
+  'Contact',
+  'upsert',
+  { extIdField: 'CommCare_Case_ID__c', failOnError: true, allowNoOp: true },
+  dataValue('patients')
+);
+
+bulk(
+  'Visit_new__c',
+  'upsert',
+  {
+    extIdField: 'gciclubfootommcare_case_id__c',
+    failOnError: true,
+    allowNoOp: true,
+  },
+  dataValue('patients')
+);

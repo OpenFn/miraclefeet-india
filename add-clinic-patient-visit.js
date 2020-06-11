@@ -19,9 +19,13 @@ alterState(state => {
     }),
     patients: state.data.Patient.map(p => {
       p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
+      delete p.CAST_Patient_ID__c;
+
+      p.gciclubfootommcare_case_id__c = p.Visit_ID__c;
+      delete p.Visit_ID__c;
+
       p['Clinic__r.Unique_Clinic_Identifier__c'] = p.CAST_Locaion_ID__c;
 
-      delete p.CAST_Patient_ID__c;
       return clean(p);
     }),
     visits: state.data.Visit.map(v => {

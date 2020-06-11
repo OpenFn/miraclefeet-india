@@ -40,7 +40,7 @@ alterState(state => {
   delete state.data.Patient;
   delete state.data.Visit;
 
-  // return state for next opertaion in job
+  // return state for next operation in job
   return state;
 });
 
@@ -66,5 +66,5 @@ bulk(
     failOnError: true,
     allowNoOp: true,
   },
-  dataValue('patients')
+  dataValue('visits')
 );

@@ -19,13 +19,9 @@ alterState(state => {
     }),
     patients: state.data.Patient.map(p => {
       p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
-      delete p.CAST_Patient_ID__c;
+      p['Clinic__r.Unique_Clinic_Identifier__c'] = p.CAST_Locaion_ID__c;
 
-      // TODO: Ask MF why clinics are sent in an array, if there will be more
-      // than one, and how to link patients to clinics.
-      p['Clinic__r.Unique_Clinic_Identifier__c'] = CAST_Location_ID__c;
       delete p.CAST_Patient_ID__c;
-
       return clean(p);
     }),
     visits: state.data.Visit.map(v => {

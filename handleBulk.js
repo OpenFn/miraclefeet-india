@@ -12,29 +12,38 @@ alterState(state => {
   const visitSets = chunk(state.data.Visit, 10);
   const deletedVisitSets = chunk(state.data.VisitDeleted, 10);
 
-  clinicSets.map(x => {
-    post(state.configuration.inboxUrl, {
-      body: { clinics: x },
+  const postClinics = async cs => {
+    return post(state.configuration.inboxUrl, {
+      body: { clinics: cs },
     })(state);
-  });
+  };
 
-  patientSets.map(x => {
-    post(state.configuration.inboxUrl, {
-      body: { patients: x },
+  const postPatients = async ps => {
+    return post(state.configuration.inboxUrl, {
+      body: { patients: ps },
     })(state);
-  });
+  };
 
-  visitSets.map(x => {
-    post(state.configuration.inboxUrl, {
-      body: { visits: x },
+  const postVisits = async vs => {
+    return post(state.configuration.inboxUrl, {
+      body: { visits: vs },
     })(state);
-  });
+  };
 
-  deletedVisitSets.map(x => {
-    post(state.configuration.inboxUrl, {
-      body: { deletedVisits: x },
+  const postDeletedVisits = async dvs => {
+    return post(state.configuration.inboxUrl, {
+      body: { deletedVisits: dvs },
     })(state);
-  });
+  };
 
-  return state;
+  async function makePosts() {
+    return Promise.all([
+      ...clinicSets.map(item => postClinics(item)),
+      ...patientSets.map(item => postPatients(item)),
+      ...visitSets.map(item => postVisits(item)),
+      ...deletedVisitSets.map(item => postDeletedVisits(item)),
+    ]);
+  }
+
+  return makePosts();
 });

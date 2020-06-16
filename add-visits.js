@@ -9,11 +9,10 @@ alterState(state => {
   }
 
   state.data = {
-    visits: state.data.visits.map(c => {
-      delete c.CreatedById;
-      delete c.LastModifiedById;
-      c.Name = 'MFI Clinic';
-      return clean(c);
+    visits: state.data.visits.map(v => {
+      v['Patient__r.CommCare_Case_ID__c'] = v.Patient_ID__c;
+      delete v.Patient_ID__c;
+      return clean(v);
     }),
   };
 
@@ -21,10 +20,10 @@ alterState(state => {
 });
 
 bulk(
-  'Account',
+  'Visit_new__c',
   'upsert',
   {
-    extIdField: 'CAST_Location_ID__c',
+    extIdField: 'gciclubfootommcare_case_id__c',
     failOnError: true,
     allowNoOp: true,
   },

@@ -20,7 +20,7 @@ alterState(state => {
       delete p.gciclubfoot__Gender__c;
 
       //p.CAST_Location_ID__c = p.CAST_Locaion_ID__c;
-      p['Clinic__r.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
+      p['AccountId.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
       delete p.CAST_Locaion_ID__c;
       
       return clean(p);

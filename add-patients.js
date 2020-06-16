@@ -10,6 +10,10 @@ alterState(state => {
 
   state.data = {
     patients: state.data.patients.map(p => {
+      //India doesn't send us names, so we set to Id
+      p.LastName = p.CAST_Patient_ID__c;
+      delete p.Name;
+      
       p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
       delete p.CAST_Patient_ID__c;
 

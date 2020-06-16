@@ -23,6 +23,9 @@ alterState(state => {
       p['Account.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
       delete p.CAST_Locaion_ID__c;
       
+      //we can't update this in SF
+      delete p.CreatedById;
+      
       return clean(p);
     }),
   };

@@ -11,7 +11,7 @@ alterState(state => {
   state.data = {
     deletedVisits: state.data.deletedVisits.map(c => {
       return {
-        CAST_Location_Id__c: c.CAST_Location_Id__c
+        gciclubfootommcare_case_id__c: c.Patient_Visit_ID
       };
     }),
   };
@@ -23,7 +23,7 @@ bulk(
   'Visit_new__c',
   'delete',
   {
-    extIdField: 'CAST_Location_ID__c',
+    extIdField: 'gciclubfootommcare_case_id__c',
     failOnError: true,
     allowNoOp: true,
   },

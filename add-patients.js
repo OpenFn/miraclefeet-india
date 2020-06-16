@@ -13,11 +13,11 @@ alterState(state => {
       p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
       delete p.CAST_Patient_ID__c;
 
-      p.gciclubfootommcare_case_id__c = p.gciclubfoot__Gender__c;
-      delete p.gciclubfoot__Gender__c;
-
-      p.Gender__c = p.Visit_ID__c;
+      p.gciclubfootommcare_case_id__c = p.Visit_ID__c;
       delete p.Visit_ID__c;
+
+      p.Gender__c = p.gciclubfoot__Gender__c;
+      delete p.gciclubfoot__Gender__c;
 
       p.CAST_Location_ID__c = p.CAST_Locaion_ID__c;
       p['Clinic__r.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;

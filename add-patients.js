@@ -16,7 +16,10 @@ alterState(state => {
       p.gciclubfootommcare_case_id__c = p.Visit_ID__c;
       delete p.Visit_ID__c;
 
+      p.CAST_Location_ID__c = p.CAST_Locaion_ID__c;
       p['Clinic__r.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
+      
+      delete p.CAST_Locaion_ID__c;
       return clean(p);
     }),
   };

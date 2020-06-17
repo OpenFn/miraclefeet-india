@@ -10,8 +10,16 @@ alterState(state => {
 
   state.data = {
     visits: state.data.visits.map(v => {
-      v['Patient__r.CommCare_Case_ID__c'] = v.Patient_ID__c;
+      
+      v['Patient__r.CommCare_Case_ID__c'] = v.Patient_ID__c; //lookup parent patient
       delete v.Patient_ID__c;
+      
+      v.gciclubfootommcare_case_id__c = v.Visit_ID__c; //reassign external Id
+      delete v.Visit_ID__c;
+      
+      //delete from upload; we can't update this in SF unless setting enabled?
+      delete v.CreatedById;
+      
       return clean(v);
     }),
   };
@@ -19,11 +27,12 @@ alterState(state => {
   return state;
 });
 
+//Upsert Visits
 bulk(
   'Visit_new__c',
   'upsert',
   {
-    extIdField: 'gciclubfootommcare_case_id__c',
+    extIdField: 'gciclubfootommcare_case_id__c', //Visit external Id
     failOnError: true,
     allowNoOp: true,
   },

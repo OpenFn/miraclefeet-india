@@ -10,24 +10,21 @@ alterState(state => {
 
   state.data = {
     patients: state.data.patients.map(p => {
-      //India doesn't send us names, so we set to Id
+      //India doesn't send us names, so we set LastName to Id
       p.LastName = p.CAST_Patient_ID__c;
       delete p.Name;
       
-      p.CommCare_Case_ID__c = p.CAST_Patient_ID__c;
+      //SF field = India field;
+      p.gciclubfoot__CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
       delete p.CAST_Patient_ID__c;
-
-      /*p.gciclubfootommcare_case_id__c = p.Visit_ID__c;
-      delete p.Visit_ID__c; */
 
       p.Gender__c = p.gciclubfoot__Gender__c;
       delete p.gciclubfoot__Gender__c;
 
-      //p.CAST_Location_ID__c = p.CAST_Locaion_ID__c;
       p['Account.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
       delete p.CAST_Locaion_ID__c;
       
-      //we can't update this in SF
+      //delete from upload; we can't update this in SF unless setting enabled?
       delete p.CreatedById;
       
       return clean(p);

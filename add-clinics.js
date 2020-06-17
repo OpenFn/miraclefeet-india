@@ -10,9 +10,12 @@ alterState(state => {
 
   state.data = {
     clinics: state.data.clinics.map(c => {
+      //delete; we cannot update these in SF unless setting enabled
       delete c.CreatedById;
       delete c.LastModifiedById;
-      c.Name = 'MFI Clinic';
+      
+      c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 
+      
       return clean(c);
     }),
   };
@@ -20,11 +23,12 @@ alterState(state => {
   return state;
 });
 
+//upsert Clinics
 bulk(
   'Account',
   'upsert',
   {
-    extIdField: 'CAST_Location_ID__c',
+    extIdField: 'CAST_Location_ID__c', //Clinic External Id
     failOnError: true,
     allowNoOp: true,
   },

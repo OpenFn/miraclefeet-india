@@ -11,7 +11,7 @@ alterState(state => {
   state.data = {
     clinics: state.data.clinics.map(c => {
       //delete; we cannot update these in SF unless setting enabled
-      delete c.CreatedById;
+      delete c.CreatedById; // map to Open Date CommCare fields
       delete c.LastModifiedById;
       
       c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 

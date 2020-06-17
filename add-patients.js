@@ -34,11 +34,12 @@ alterState(state => {
   return state;
 });
 
+//Upload Patients
 bulk(
   'Contact',
   'upsert',
   {
-    extIdField: 'CommCare_Case_ID__c',
+    extIdField: 'CommCare_Case_ID__c', //Patient external Id
     failOnError: true,
     allowNoOp: true,
   },

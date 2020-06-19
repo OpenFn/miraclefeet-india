@@ -11,7 +11,7 @@ alterState(state => {
   state.data = {
     deletedVisits: state.data.deletedVisits.map(c => {
       return {
-        gciclubfootommcare_case_id__c: c.Patient_Visit_ID
+        gciclubfootommcare_case_id__c: c.Visit_ID__c
       };
     }),
   };

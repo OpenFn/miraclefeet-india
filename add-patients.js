@@ -15,8 +15,9 @@ alterState(state => {
       delete p.Name;
       
       //SF field = India field;
-      p.gciclubfoot__CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
+      p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
       delete p.CAST_Patient_ID__c;
+      delete p.gciclubfoot__CAST_Patient_ID__c;
 
       p.Gender__c = p.gciclubfoot__Gender__c;
       delete p.gciclubfoot__Gender__c;

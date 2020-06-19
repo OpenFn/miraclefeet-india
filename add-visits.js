@@ -11,8 +11,8 @@ alterState(state => {
   state.data = {
     visits: state.data.visits.map(v => {
       
-      v['Patient__r.CommCare_Case_ID__c'] = v.Patient_ID__c; //lookup parent patient
-      delete v.Patient_ID__c;
+      v['Patient__r.CommCare_Case_ID__c'] = v.Patient__c; //lookup parent patient
+      delete v.Patient__c;
       
       v.gciclubfootommcare_case_id__c = v.Visit_ID__c; //reassign external Id
       delete v.Visit_ID__c;

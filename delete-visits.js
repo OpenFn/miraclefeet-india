@@ -1,31 +1,18 @@
 alterState(state => {
-  function clean(obj) {
-    for (var propName in obj) {
-      if (obj[propName] === '-' || obj[propName] === null) {
-        delete obj[propName];
-      }
-    }
-    return obj;
-  }
+  const ids = state.data.deletedVisits
+    .map(c => {
+      return `'${c.Visit_ID__c}'`;
+    })
+    .toString();
 
-  state.data = {
-    deletedVisits: state.data.deletedVisits.map(c => {
-      return {
-        gciclubfootommcare_case_id__c: c.Visit_ID__c
-      };
-    }),
-  };
-
-  return state;
+  return query(
+    `SELECT Id FROM Visit_new__c WHERE gciclubfootommcare_case_id__c IN (${ids})`
+  )(state);
 });
 
 bulk(
   'Visit_new__c',
   'delete',
-  {
-    extIdField: 'gciclubfootommcare_case_id__c',
-    failOnError: true,
-    allowNoOp: true,
-  },
-  dataValue('deletedVisits')
+  { failOnError: true, allowNoOp: true },
+  lastReferenceValue('records')
 );

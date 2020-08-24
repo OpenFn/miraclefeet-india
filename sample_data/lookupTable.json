@@ -1,0 +1,437 @@
+{"LookupTable": [
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "No Abnormalities",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Lower Extremities",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Upper Extremities",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Hips",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Spine",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Head",
+      "LookupCode": 6
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Heart",
+      "LookupCode": 7
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Lungs",
+      "LookupCode": 8
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Urinary",
+      "LookupCode": 9
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Digestive",
+      "LookupCode": 10
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Skin",
+      "LookupCode": 11
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Neurological",
+      "LookupCode": 12
+    },
+    {
+      "AppFieldName": "Abnormalities_besides_clubfoot",
+      "Description": "Other",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "BraceWeartimeL/BraceWeartimeR",
+      "Description": "All day and night",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "BraceWeartimeL/BraceWeartimeR",
+      "Description": "At night and for naps",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "ComplicationType_L/ComplicationType",
+      "Description": "Slippage of plaster",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "ComplicationType_L/ComplicationType",
+      "Description": "Skin redness / rash / blister / sore",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "ComplicationType_L/ComplicationType",
+      "Description": "Swelling",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "ComplicationType_L/ComplicationType",
+      "Description": "Plaster saw injury",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "ComplicationType_L/ComplicationType",
+      "Description": "Other",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Syndromic",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Untreated (less than two Year of age)",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Neglected (Above two year of age)",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Spina Bifida",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Arthrogryposis",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Resistant",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Recurrent",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Atypical",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Complex",
+      "LookupCode": 6
+    },
+    {
+      "AppFieldName": "Diagnosis_Subtype",
+      "Description": "Other neuropathic",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "DiagnosisType",
+      "Description": "New Receipt",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "DiagnosisType",
+      "Description": "Used brace return",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "DiagnosisType",
+      "Description": "Other clinic transfer",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "DiagnosisType",
+      "Description": "State transfer",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "DiagnosisType",
+      "Description": "Other",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "FeetAffected",
+      "Description": "Left",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "FeetAffected",
+      "Description": "Right",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "FeetAffected",
+      "Description": "Both",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Gender",
+      "Description": "Male",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Gender",
+      "Description": "Female",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Mother",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Father",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Grandparent",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Brother",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Sister",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Aunt",
+      "LookupCode": 6
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Uncle",
+      "LookupCode": 7
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Friend",
+      "LookupCode": 8
+    },
+    {
+      "AppFieldName": "Guardian_Relation_P",
+      "Description": "Other",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Moved",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Family refuses treatment",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Family stopped coming",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Death",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Duplicate patient record",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "InterruptReason",
+      "Description": "Other reason",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "IsBraceNewL/IsBraceNewR",
+      "Description": "New",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "IsBraceNewL/IsBraceNewR",
+      "Description": "Refurbished",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Posterior medial release (PMR)",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Tendon transfer",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Corrective osteotomy",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Achilles tendon lengthening",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Tibialis anterior tendon transfer",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "Left_Surgery_Type",
+      "Description": "Other",
+      "LookupCode": 99
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Cavus",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Adductus",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Varus",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Equinus",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Rigid Cave",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "Referral_Info",
+      "Description": "Dynamic Supination",
+      "LookupCode": 6
+    },
+    {
+      "AppFieldName": "Shoe_IssueL/Shoe_IssueR",
+      "Description": "Both",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "Shoe_IssueL/Shoe_IssueR",
+      "Description": "Single",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Himachal Pradesh",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Uttar Pradesh",
+      "LookupCode": 9
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Nagaland",
+      "LookupCode": 13
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Mizoram",
+      "LookupCode": 15
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Tripura",
+      "LookupCode": 16
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Madhya Pradesh",
+      "LookupCode": 23
+    },
+    {
+      "AppFieldName": "StateCode",
+      "Description": "Maharashtra",
+      "LookupCode": 27
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Manipulation and Casting",
+      "LookupCode": 1
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Tenotomy",
+      "LookupCode": 2
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "First Brace",
+      "LookupCode": 3
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Brace Follow Up",
+      "LookupCode": 4
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Surgery",
+      "LookupCode": 5
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Temporarily Suspend Treatment",
+      "LookupCode": 6
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "None -Treatment is Complete",
+      "LookupCode": 7
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Refer",
+      "LookupCode": 8
+    },
+    {
+      "AppFieldName": "TreatmentL/TreatmentR",
+      "Description": "Other",
+      "LookupCode": 99
+    }
+  ]}

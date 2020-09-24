@@ -12,6 +12,53 @@ alterState(state => {
   const visitSets = chunk(state.data.Visit, 10);
   const deletedVisitSets = chunk(state.data.VisitDeleted, 10);
 
+  // Mapping LookupCode
+  clinicSets.forEach(clin_sets => {
+    clin_sets.forEach(set => {
+      Object.keys(set).forEach(key => {
+        state.data.LookupTable.forEach(code => {
+          if (key === code.AppFieldName && set[key] == code.LookupCode) {
+            set[key] = code.Description;
+          }
+        });
+      });
+    });
+  });
+  patientSets.forEach(clin_sets => {
+    clin_sets.forEach(set => {
+      Object.keys(set).forEach(key => {
+        state.data.LookupTable.forEach(code => {
+          if (key === code.AppFieldName && set[key] == code.LookupCode) {
+            set[key] = code.Description;
+          }
+        });
+      });
+    });
+  });
+  visitSets.forEach(clin_sets => {
+    clin_sets.forEach(set => {
+      Object.keys(set).forEach(key => {
+        state.data.LookupTable.forEach(code => {
+          if (key === code.AppFieldName && set[key] == code.LookupCode) {
+            set[key] = code.Description;
+          }
+        });
+      });
+    });
+  });
+  deletedVisitSets.forEach(clin_sets => {
+    clin_sets.forEach(set => {
+      Object.keys(set).forEach(key => {
+        state.data.LookupTable.forEach(code => {
+          if (key === code.AppFieldName && set[key] == code.LookupCode) {
+            set[key] = code.Description;
+          }
+        });
+      });
+    });
+  });
+  // Mapping LookupCode -- End
+
   const postClinics = async cs => {
     return post(state.configuration.inboxUrl, {
       body: { clinics: cs },
@@ -44,6 +91,5 @@ alterState(state => {
       ...deletedVisitSets.map(item => postDeletedVisits(item)),
     ]);
   }
-
   return makePosts();
 });

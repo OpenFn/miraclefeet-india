@@ -24,8 +24,9 @@ alterState(state => {
       });
     });
   });
-  patientSets.forEach(clin_sets => {
-    clin_sets.forEach(set => {
+
+  patientSets.forEach(patient_sets => {
+    patient_sets.forEach(set => {
       Object.keys(set).forEach(key => {
         state.data.LookupTable.forEach(code => {
           if (key === code.AppFieldName && set[key] == code.LookupCode) {
@@ -35,8 +36,9 @@ alterState(state => {
       });
     });
   });
-  visitSets.forEach(clin_sets => {
-    clin_sets.forEach(set => {
+
+  visitSets.forEach(visit_sets => {
+    visit_sets.forEach(set => {
       Object.keys(set).forEach(key => {
         state.data.LookupTable.forEach(code => {
           if (key === code.AppFieldName && set[key] == code.LookupCode) {
@@ -46,8 +48,9 @@ alterState(state => {
       });
     });
   });
-  deletedVisitSets.forEach(clin_sets => {
-    clin_sets.forEach(set => {
+
+  deletedVisitSets.forEach(delvisit_sets => {
+    delvisit_sets.forEach(set => {
       Object.keys(set).forEach(key => {
         state.data.LookupTable.forEach(code => {
           if (key === code.AppFieldName && set[key] == code.LookupCode) {

@@ -17,6 +17,8 @@ alterState(state => {
       v.gciclubfootommcare_case_id__c = v.Visit_ID__c; //reassign external Id
       delete v.Visit_ID__c;
       
+      delete v.CommCare_Case_ID__c; 
+      
       //delete from upload; we can't update this in SF unless setting enabled?
       delete v.CreatedById;
       

@@ -21,9 +21,11 @@ alterState(state => {
       //delete from upload; we can't update this in SF unless setting enabled?
       delete v.CreatedById;
       
+      //TODO: ADD BACK IN ...
       delete v.TreatmentR_Other;
       delete v.ComplicationType_L;
       delete v.ComplicationType;
+      delete v.LastModifiedById;
       
       return clean(v);
     }),

@@ -26,6 +26,7 @@ alterState(state => {
       delete v.ComplicationType_L;
       delete v.ComplicationType;
       delete v.LastModifiedById;
+      //picklist mapping: Steenbeek_Brace_Size__c
       
       return clean(v);
     }),

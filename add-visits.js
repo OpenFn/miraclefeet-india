@@ -23,6 +23,7 @@ alterState(state => {
       
       delete v.TreatmentR_Other;
       delete v.ComplicationType_L;
+      delete v.ComplicationType;
       
       return clean(v);
     }),

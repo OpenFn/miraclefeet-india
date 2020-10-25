@@ -21,6 +21,8 @@ alterState(state => {
       //delete from upload; we can't update this in SF unless setting enabled?
       delete v.CreatedById;
       
+      delete v.TreatmentR_Other;
+      
       return clean(v);
     }),
   };

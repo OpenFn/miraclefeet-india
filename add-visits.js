@@ -22,6 +22,7 @@ alterState(state => {
       delete v.CreatedById;
       
       delete v.TreatmentR_Other;
+      delete v.ComplicationType_L;
       
       return clean(v);
     }),

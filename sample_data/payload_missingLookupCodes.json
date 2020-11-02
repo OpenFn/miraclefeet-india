@@ -1,0 +1,20 @@
+{
+    "Patient": [
+        {
+            "Treatment_Completed__c": 0,
+        }
+    ],
+    "Visit": [
+        {
+            "MiracleFeet_Bar_Size__c": "miraclefeet Bar Size 1 - 180 mm",
+            "MiracleFeet_Shoe_Size__c": "Bachi Shoes Size 0",
+            "Steenbeek_Brace_Size__c": "Steenbeek Brace Size 9",
+            "Right_Pirani_Score_Improved__c": 1,
+            "Left_Pirani_Score_Same__c": "0",
+            "Right_Pirani_Score_Not_Improved__c": 0,
+            "First_Brace__c": "1",
+            "Right_Pirani_Score_Same__c": 0,
+            "Left_Pirani_Score_Not_Improved__c": "0",
+        }
+    ]
+}

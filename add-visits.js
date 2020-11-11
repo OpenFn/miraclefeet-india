@@ -26,7 +26,7 @@ alterState(state => {
       delete v.Relapse_Type_Right__c
       delete v.Relapse_Feet_Affected__c; 
       delete v.Bracing_Stage__c;
-      delete v.TreatmentR_Other;
+     // delete v.TreatmentR_Other;
       delete v.ComplicationType_L;
       delete v.ComplicationType;
       delete v.LastModifiedById;

@@ -21,16 +21,27 @@ alterState(state => {
       //delete from upload; we can't update this in SF unless setting enabled?
       delete v.CreatedById;
       
-      //TODO: ADD BACK IN ...
+      v.Right_Treatment_Other__c = v.TreatmentR_Other; 
+      delete v.TreatmentR_Other; 
+      
+      v.Left_Treatment_Other__c = v.TreatmentL_Other; 
+      delete v.TreatmentL_Other; 
+      
+      v.Casting_Complications_Type__c = v.ComplicationType;
+      delete v.ComplicationType;
+      
+      v.Casting_Complications_Notes__c = v.ComplicationType_L + v.ComplicationType_R;
+      delete v.ComplicationType_L;
+      delete v.ComplicationType_R; 
+      
+      //TODO: ADD BACK IN AFTER TRANSFORMATIONS IMPLEMENTED...
       delete v.Relapse_Type_Left__c; 
       delete v.Relapse_Type_Right__c
       delete v.Relapse_Feet_Affected__c; 
       delete v.Bracing_Stage__c;
-     // delete v.TreatmentR_Other;
-      delete v.ComplicationType_L;
-      delete v.ComplicationType;
+      //=========================//
+      
       delete v.LastModifiedById;
-      //picklist mapping: Steenbeek_Brace_Size__c
       
       return clean(v);
     }),

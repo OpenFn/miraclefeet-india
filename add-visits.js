@@ -16,7 +16,7 @@ alterState(state => {
     1: 'Cavus',
     2: 'Dynamic Supination',
     3: 'Equinus',
-    4: 'Adductus',
+    4: 'Forefoot Adduction',
     5: 'Varus',
   };
 

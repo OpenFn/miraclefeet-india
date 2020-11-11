@@ -22,6 +22,7 @@ alterState(state => {
       delete v.CreatedById;
       
       //TODO: ADD BACK IN ...
+      delete v.Relapse_Feet_Affected__c; 
       delete v.Bracing_Stage__c;
       delete v.TreatmentR_Other;
       delete v.ComplicationType_L;

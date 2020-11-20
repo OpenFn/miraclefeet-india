@@ -12,6 +12,7 @@ alterState(state => {
     'All day and night': 'bracing_all_day',
     'At night and for naps': 'bracing_night_naps',
   };
+
   const relapseTypeMap = {
     1: 'Cavus',
     2: 'Dynamic Supination',
@@ -19,6 +20,31 @@ alterState(state => {
     4: 'Forefoot Adduction',
     5: 'Varus',
   };
+
+  const miracleFeetBarSizeMap = {
+    '150 mm': 'Extra Small',
+    '180 mm': 'Small',
+    '220 mm': 'Large',
+  };
+
+  function getBarSize(matched_value) {
+    return miracleFeetBarSizeMap[matched_value]
+      ? miracleFeetBarSizeMap[matched_value]
+      : '-';
+  }
+
+  // Option 1
+  function searchBarSizeStringByRegex(str) {
+    console.log('');
+    let regExp = /(\d+\s*mm$)/g;
+    let matches = str.trim().match(regExp);
+    return matches ? matches[0] : 'Invalid';
+  }
+
+  // Option 2
+  // function searchBarSizeStringBySlice(str) {
+  //   return str.trim().slice(-6).trim();
+  // }
 
   state.data = {
     visits: state.data.visits.map(v => {
@@ -72,6 +98,16 @@ alterState(state => {
         RelapseTypeTransformed.push(relapseTypeMap[type]);
       }
       v.Relapse_Type_Left__c = RelapseTypeTransformed.join('; ');
+
+      // Option 1
+      v.MiracleFeet_Bar_Size__c = getBarSize(
+        searchBarSizeStringByRegex(v.MiracleFeet_Bar_Size__c)
+      );
+      // Option 2
+      // v.MiracleFeet_Bar_Size__c = getBarSize(
+      //   searchBarSizeStringBySlice(v.MiracleFeet_Bar_Size__c)
+      // );
+
       // ========================================================
 
       return clean(v);

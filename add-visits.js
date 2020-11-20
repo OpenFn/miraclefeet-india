@@ -33,18 +33,11 @@ alterState(state => {
       : '-';
   }
 
-  // Option 1
   function searchBarSizeStringByRegex(str) {
-    console.log('');
     let regExp = /(\d+\s*mm$)/g;
     let matches = str.trim().match(regExp);
     return matches ? matches[0] : 'Invalid';
   }
-
-  // Option 2
-  // function searchBarSizeStringBySlice(str) {
-  //   return str.trim().slice(-6).trim();
-  // }
 
   state.data = {
     visits: state.data.visits.map(v => {
@@ -99,15 +92,9 @@ alterState(state => {
       }
       v.Relapse_Type_Left__c = RelapseTypeTransformed.join('; ');
 
-      // Option 1
       v.MiracleFeet_Bar_Size__c = getBarSize(
         searchBarSizeStringByRegex(v.MiracleFeet_Bar_Size__c)
       );
-      // Option 2
-      // v.MiracleFeet_Bar_Size__c = getBarSize(
-      //   searchBarSizeStringBySlice(v.MiracleFeet_Bar_Size__c)
-      // );
-
       // ========================================================
 
       return clean(v);

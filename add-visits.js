@@ -28,15 +28,29 @@ alterState(state => {
   };
 
   function getBarSize(matched_value) {
-    return miracleFeetBarSizeMap[matched_value]
-      ? miracleFeetBarSizeMap[matched_value]
-      : '-';
+    let bar_size = '-';
+
+    for (const [key, value] of Object.entries(miracleFeetBarSizeMap)) {
+      if (parseFloat(key) === parseFloat(matched_value)) {
+        bar_size = value;
+        break;
+      }
+    }
+    if (matched_value !== 'Invalid' && bar_size === '-') {
+      throw new TypeError(
+        `The current miracleFeetBarSizeMap is outdated! The data shows we have received a new bar size(${matched_value}) from the client! Please update miracleFeetBarSizeMap with a new entry for this value: ${matched_value}`,
+        'add-visits.js',
+        24
+      );
+    }
+
+    return bar_size;
   }
 
   function searchBarSizeStringByRegex(str) {
-    let regExp = /(\d+\s*mm$)/g;
-    let matches = str.trim().match(regExp);
-    return matches ? matches[0] : 'Invalid';
+    let regExp = /((\d+(\.\d+)?)\s*mm)/g;
+    let matches = regExp.exec(str.trim());
+    return matches ? matches[1] : 'Invalid';
   }
 
   state.data = {

@@ -14,7 +14,9 @@ alterState(state => {
       delete c.CreatedById; // map to Open Date CommCare fields
       delete c.LastModifiedById;
       
-      c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 
+      c.Clinic_External_ID__c = c.Name; 
+      
+     // c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 
       
       return clean(c);
     }),
@@ -28,7 +30,8 @@ bulk(
   'Account',
   'upsert',
   {
-    extIdField: 'CAST_Location_ID__c', //Clinic External Id
+    extIdField: 'Clinic_External_ID__c',
+    //extIdField: 'CAST_Location_ID__c', //Clinic External Id
     failOnError: true,
     allowNoOp: true,
   },

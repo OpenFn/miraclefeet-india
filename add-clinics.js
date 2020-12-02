@@ -15,6 +15,8 @@ alterState(state => {
       delete c.LastModifiedById;
       
       c.Clinic_External_ID__c = c.Name; 
+      c.India_Clinic_Code__c = c.CAST_Location_ID__c;
+      delete c.CAST_Location_ID__c
       
      // c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 
       

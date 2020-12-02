@@ -24,7 +24,7 @@ alterState(state => {
 
       //p['Account.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
       //delete p.CAST_Locaion_ID__c;
-      p['Account.CAST_Location_ID__c'] = p.CAST_Location_ID__c;
+      p['Account.India_Clinic_Code__c'] = p.CAST_Location_ID__c;
       delete p.CAST_Location_ID__c;
       
       //delete from upload; we can't update this in SF unless setting enabled?

@@ -67,7 +67,8 @@ alterState(state => {
       delete v.ComplicationType_L;
       delete v.ComplicationType_R;
       
-      v.Relapse_Feet_Affected__c == 0 ? null : v.Relapse_Feet_Affected__c; 
+      v.Left_Treatment__c == 0 ? null : v.Left_Treatment__c; 
+      v.Right_Treatment__c == 0 ? null : v.Right_Treatment__c; 
 
       // New transformations implemented ========================
       v.Bracing_Stage__c = bracingStageMap[v.Bracing_Stage__c];

@@ -59,8 +59,8 @@ alterState(state => {
       v.Left_Treatment_Other__c = v.TreatmentL_Other;
       delete v.TreatmentL_Other;
 
-     // v.Casting_Complications_Type__c = v.ComplicationType;
-     // delete v.ComplicationType;
+     v.Casting_Complications_Type__c = v.ComplicationType;
+     delete v.ComplicationType;
 
       v.Casting_Complications_Notes__c =
         v.ComplicationType_L + v.ComplicationType_R;

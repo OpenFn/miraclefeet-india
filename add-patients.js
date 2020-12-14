@@ -12,7 +12,10 @@ alterState(state => {
     patients: state.data.patients.map(p => {
       //India doesn't send us names, so we set LastName to Id
       p.LastName = p.CAST_Patient_ID__c;
+      p.Patient_Name__c = p.CAST_Patient_ID__c;
       delete p.Name;
+      
+      p.Country__c = 'India'; //default Country
       
       //SF field = India field;
       //p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
@@ -29,6 +32,8 @@ alterState(state => {
       
       //delete from upload; we can't update this in SF unless setting enabled?
       delete p.CreatedById;
+      
+      
       
       return clean(p);
     }),

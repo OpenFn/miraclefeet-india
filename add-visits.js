@@ -78,7 +78,9 @@ alterState(state => {
           ? 'Left'
           : v.Relapse_Feet_Affected__c == 2
           ? 'Right'
-          : 'Both';
+          : v.Relapse_Feet_Affected__c
+          ? 'Both'
+          : '';
 
       let RelapseTypeTransformed = [];
 

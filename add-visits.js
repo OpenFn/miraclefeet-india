@@ -64,11 +64,12 @@ alterState(state => {
 
      v.Casting_Complications_Type__c = v.ComplicationType;
      delete v.ComplicationType;
+     
+     v.ComplicationType_L = v.ComplicationType_L && v.ComplicationType_L !== undefined && v.ComplicationType_L !== 'undefined'? v.ComplicationType_L : '';
+     v.ComplicationType_R = v.ComplicationType_R && v.ComplicationType_R !== undefined && v.ComplicationType_R !== 'undefined'? v.ComplicationType_R : '';
 
-      v.Casting_Complications_Notes__c =
-        v.ComplicationType_L + v.ComplicationType_R;
       v.Casting_Complications_Notes__c = 
-        v.Casting_Complications_Notes__c ? v.Casting_Complications_Notes__c : '';
+        v.ComplicationType_L  + v.ComplicationType_R;
       delete v.ComplicationType_L;
       delete v.ComplicationType_R;
       

@@ -64,6 +64,8 @@ alterState(state => {
 
       v.Casting_Complications_Notes__c =
         v.ComplicationType_L + v.ComplicationType_R;
+      v.Casting_Complications_Notes__c = 
+        v.Casting_Complications_Notes__c ? v.Casting_Complications_Notes__c : '';
       delete v.ComplicationType_L;
       delete v.ComplicationType_R;
       

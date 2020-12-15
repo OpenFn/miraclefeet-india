@@ -4,6 +4,9 @@ alterState(state => {
       if (obj[propName] === '-' || obj[propName] === null) {
         delete obj[propName];
       }
+      if (obj[propName] === 0) {
+        obj[propName]='';
+      }
     }
     return obj;
   }

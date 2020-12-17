@@ -93,7 +93,7 @@ alterState(state => {
       v.Casting_Complications_Notes__c === undefined || v.Casting_Complications_Notes__c === 'undefined' ? '' : v.Casting_Complications_Notes__c;
       
       v.Left_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Left_Treatment__c; 
-      v.Right_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Right_Treatment__c; 
+      v.Right_Treatment__c == 0 || v.Right_Treatment__c =='0' ? '' : v.Right_Treatment__c; 
       
       v.Right_Treatment_Other__c = treatmentMap[v.Right_Treatment__c]==='Other'
       ? v.Right_Treatment__c 

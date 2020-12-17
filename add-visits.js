@@ -3,10 +3,9 @@ alterState(state => {
     for (var propName in obj) {
       if (obj[propName] === '-' || obj[propName] === null) {
         delete obj[propName];
-      }
-      if (obj[propName] === 0) {
+      } else if (obj[propName] === 0) {
         obj[propName]='';
-      }
+      } 
     }
     return obj;
   }
@@ -72,10 +71,10 @@ alterState(state => {
         v.ComplicationType_L  + v.ComplicationType_R;
       delete v.ComplicationType_L;
       delete v.ComplicationType_R;
-      v.Casting_Complications_Notes__c === undefined || 'undefined' ? '' : v.Casting_Complications_Notes__c;
+      v.Casting_Complications_Notes__c === undefined || v.Casting_Complications_Notes__c === 'undefined' ? '' : v.Casting_Complications_Notes__c;
       
-      v.Left_Treatment__c == 0 || '0' ? '' : v.Left_Treatment__c; 
-      v.Right_Treatment__c == 0 || '0' ? '' : v.Right_Treatment__c; 
+      v.Left_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Left_Treatment__c; 
+      v.Right_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Right_Treatment__c; 
 
       // New transformations implemented ========================
       v.Bracing_Stage__c = bracingStageMap[v.Bracing_Stage__c];

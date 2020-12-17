@@ -14,6 +14,7 @@ alterState(state => {
     'All day and night': 'bracing_all_day',
     'At night and for naps': 'bracing_night_naps',
   };
+  
 
   const relapseTypeMap = {
     1: 'Cavus',
@@ -27,6 +28,20 @@ alterState(state => {
     '150 mm': 'Extra Small',
     '180 mm': 'Small',
     '220 mm': 'Large',
+  };
+  
+  const treatmentMap = {
+    'Manipulation and Casting': 'Casting',
+    'Casting': 'Casting', 
+    'First Brace': 'First Brace', 
+    'Brace Followup': 'Brace Followup', 
+    'Brace Follow Up': 'Brace Followup', 
+    'Tenotomy': 'Tenotomy', 
+    'Surgery': 'Surgery',
+    'Temporarily Suspend': 'Temporarily Suspend',
+    'Temporarily Complete': 'Temporarily Complete',
+    'Refer': 'Other', 
+    'Other': 'Other'
   };
 
   function getBarSize(matched_value) {
@@ -75,6 +90,9 @@ alterState(state => {
       
       v.Left_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Left_Treatment__c; 
       v.Right_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Right_Treatment__c; 
+      
+      v.Right_Treatment__c = treatmentMap[v.Right_Treatment__c] || 'Other';
+      v.Left_Treatment__c = treatmentMap[v.Left_Treatment__c] || 'Other';
 
       // New transformations implemented ========================
       v.Bracing_Stage__c = bracingStageMap[v.Bracing_Stage__c];

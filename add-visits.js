@@ -103,8 +103,8 @@ alterState(state => {
       ? v.Left_Treatment__c
       : '';
       
-      v.Right_Treatment__c = treatmentMap[v.Right_Treatment__c] || 'Other';
-      v.Left_Treatment__c = treatmentMap[v.Left_Treatment__c] || 'Other';
+      v.Right_Treatment__c = v.Right_Treatment__c===0 ? '': treatmentMap[v.Right_Treatment__c] || 'Other';
+      v.Left_Treatment__c = v.Left_Treatment__c===0 ? '': treatmentMap[v.Left_Treatment__c] || 'Other';
 
       // New transformations implemented ========================
       v.Bracing_Stage__c = bracingStageMap[v.Bracing_Stage__c];

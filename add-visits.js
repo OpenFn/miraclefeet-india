@@ -45,7 +45,7 @@ alterState(state => {
     'Refer': 'Other', 
     'Other': 'Other',
     '0': '',
-    0 : '0'
+    0 : ''
   };
 
   function getBarSize(matched_value) {

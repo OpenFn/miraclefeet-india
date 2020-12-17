@@ -93,6 +93,14 @@ alterState(state => {
       v.Left_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Left_Treatment__c; 
       v.Right_Treatment__c == 0 || v.Left_Treatment__c =='0' ? '' : v.Right_Treatment__c; 
       
+      v.Right_Treatment_Other__c = treatmentMap[v.Right_Treatment__c]==='Other'
+      ? v.Right_Treatment__c 
+      : '';
+      
+      v.Left_Treatment_Other__c = treatmentMap[v.Left_Treatment__c]==='Other' 
+      ? v.Left_Treatment__c
+      : '';
+      
       v.Right_Treatment__c = treatmentMap[v.Right_Treatment__c] || 'Other';
       v.Left_Treatment__c = treatmentMap[v.Left_Treatment__c] || 'Other';
 

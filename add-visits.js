@@ -43,7 +43,9 @@ alterState(state => {
     'Temporarily Complete': 'Temporarily Complete',
     'None -Treatment is Complete': 'Temporarily Complete',
     'Refer': 'Other', 
-    'Other': 'Other'
+    'Other': 'Other',
+    '0': '',
+    0 : '0'
   };
 
   function getBarSize(matched_value) {

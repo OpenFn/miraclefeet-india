@@ -35,11 +35,13 @@ alterState(state => {
     'Casting': 'Casting', 
     'First Brace': 'First Brace', 
     'Brace Followup': 'Brace Followup', 
-    'Brace Follow Up': 'Brace Followup', 
+    'Brace Follow Up': 'Brace Follow Up', 
     'Tenotomy': 'Tenotomy', 
     'Surgery': 'Surgery',
+    'Temporarily Suspend Treatment': 'Temporarily Suspend',
     'Temporarily Suspend': 'Temporarily Suspend',
     'Temporarily Complete': 'Temporarily Complete',
+    'None -Treatment is Complete': 'Temporarily Complete',
     'Refer': 'Other', 
     'Other': 'Other'
   };

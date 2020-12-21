@@ -17,9 +17,10 @@ alterState(state => {
       c.Clinic_External_ID__c = c.Name; 
       c.India_Clinic_Code__c = c.CAST_Location_ID__c;
       delete c.CAST_Location_ID__c
+      c.Last_Updated_by_India_CAST_App__c = new Date().toISOString();
+      c.Country__c = 'India';
       
-     // c.Name = 'MFI Clinic';  //confirm we name all India clinic this? 
-      
+
       return clean(c);
     }),
   };

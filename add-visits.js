@@ -65,6 +65,8 @@ alterState(state => {
       //delete from upload; we can't update this in SF unless setting enabled?
       delete v.CreatedById;
       delete v.LastModifiedById;
+      
+      v.Last_Updated_by_India_CAST_App__c = new Date(); 
 
       //Mappings India provided need to be re-mapped to correct Salesforce field
       v['Patient__r.CommCare_Case_ID__c'] = v.Patient__c; //lookup parent patient

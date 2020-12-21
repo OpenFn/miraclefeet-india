@@ -15,6 +15,8 @@ alterState(state => {
       p.Patient_Name__c = p.CAST_Patient_ID__c;
       delete p.Name;
       
+      p.Last_Updated_by_India_CAST_App__c = new Date(); 
+      
       p.Country__c = 'India'; //default Country
       
       p.Relapse_Type_Left_India__c = p.Relapse_Type_Left_Foot__c ? p.Relapse_Type_Left_Foot__c : '';

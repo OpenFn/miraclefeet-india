@@ -17,6 +17,9 @@ alterState(state => {
       
       p.Country__c = 'India'; //default Country
       
+      p.Relapse_Type_Left_India__c = p.Relapse_Type_Left_Foot__c ? p.Relapse_Type_Left_Foot__c : '';
+      p.Relapse_Type_Right_India__c = p.Relapse_Type_Right_Foot__c ? p.Relapse_Type_Right_Foot__c : '';
+      
       //SF field = India field;
       //p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
      // delete p.CAST_Patient_ID__c;

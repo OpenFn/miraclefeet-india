@@ -14,17 +14,28 @@ alterState(state => {
       p.LastName = p.CAST_Patient_ID__c;
       p.Patient_Name__c = p.CAST_Patient_ID__c;
       delete p.Name;
-      
-      p.Last_Updated_by_India_CAST_App__c = new Date().toISOString(); 
-      
+
+      const visitDate = new Date(p.Date_of_First_Visit__c);
+      const birthdayDate = new Date(p.Birthdate);
+      const dayDifference = Math.abs(
+        (visitDate.getDate() - birthdayDate.getDate()) / (1000 * 3600 * 24)
+      );
+      p.Age_Months_Started_Treatment__c = dayDifference / 30.4;
+
+      p.Last_Updated_by_India_CAST_App__c = new Date().toISOString();
+
       p.Country__c = 'India'; //default Country
-      
-      p.Relapse_Type_Left_India__c = p.Relapse_Type_Left_Foot__c ? p.Relapse_Type_Left_Foot__c : '';
-      p.Relapse_Type_Right_India__c = p.Relapse_Type_Right_Foot__c ? p.Relapse_Type_Right_Foot__c : '';
-      
+
+      p.Relapse_Type_Left_India__c = p.Relapse_Type_Left_Foot__c
+        ? p.Relapse_Type_Left_Foot__c
+        : '';
+      p.Relapse_Type_Right_India__c = p.Relapse_Type_Right_Foot__c
+        ? p.Relapse_Type_Right_Foot__c
+        : '';
+
       //SF field = India field;
       //p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
-     // delete p.CAST_Patient_ID__c;
+      // delete p.CAST_Patient_ID__c;
       delete p.gciclubfoot__CAST_Patient_ID__c;
 
       p.Gender__c = p.gciclubfoot__Gender__c;
@@ -34,12 +45,10 @@ alterState(state => {
       //delete p.CAST_Locaion_ID__c;
       p['Account.India_Clinic_Code__c'] = p.CAST_Location_ID__c;
       delete p.CAST_Location_ID__c;
-      
+
       //delete from upload; we can't update this in SF unless setting enabled?
       delete p.CreatedById;
-      
-      
-      
+
       return clean(p);
     }),
   };

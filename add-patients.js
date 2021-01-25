@@ -18,7 +18,7 @@ alterState(state => {
       const visitDate = new Date(p.Date_of_First_Visit__c);
       const birthdayDate = new Date(p.Birthdate);
       const dayDifference = Math.abs(
-        (visitDate.getDate() - birthdayDate.getDate()) / (1000 * 3600 * 24)
+        (visitDate - birthdayDate) / (1000 * 3600 * 24)
       );
       p.Age_Months_Started_Treatment__c = dayDifference / 30.4;
 

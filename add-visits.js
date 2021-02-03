@@ -120,6 +120,13 @@ alterState(state => {
           ? 'Both'
           : '';
 
+      v.Tenotomy_Given__c =
+        v.Tenotomy_Given__c == 1
+          ? 'Yes'
+          : v.Tenotomy_Given__c == 0
+          ? 'No'
+          : '';
+
       let RelapseTypeTransformed = [];
 
       const RelapseTypeRight = v.Relapse_Type_Right__c.split(',');

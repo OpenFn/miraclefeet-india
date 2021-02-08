@@ -1,5 +1,5 @@
 # MiracleFeet India Integration
-OpenFn integration between CAST custom app and MF Global Salesforce system. 
+OpenFn integration between CAST custom app and MF Global Salesforce system. See the main [MiracleFeet Repo](https://github.com/OpenFn/Miracle-Feet/) for more on other Salesforce integrations. 
 
 This integration is live on the OpenFn.org `MiracleFeet India` project. 
 

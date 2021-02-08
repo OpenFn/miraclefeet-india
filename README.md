@@ -30,8 +30,8 @@ The MiracleFeet Global System Administrators will be responsible for ongoing int
 Failures may require additional data cleaning automation or coordination with the MiracleFeet India team to review which data was/was not forwarded from the CAST app. 
 
 # Implementation Next Steps
-[ ] Historical migration of all clinic data; adjustment to integration
-[ ] System admin training 
-[ ] Finalization of data sharing agreement - [see draft here](https://docs.google.com/document/d/1wbxwRj_UK8C8sI7-t3GO2FAWQlJKUUBwvnY_VYtsfQA/edit?usp=sharing)
+- [ ] Historical migration of all clinic data; adjustment to integration
+- [ ] System admin training 
+- [ ] Finalization of data sharing agreement - [see draft here](https://docs.google.com/document/d/1wbxwRj_UK8C8sI7-t3GO2FAWQlJKUUBwvnY_VYtsfQA/edit?usp=sharing)
 
 

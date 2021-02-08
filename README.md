@@ -13,10 +13,11 @@ This OpenFn-powered integration automates a one-way data sync between the India 
 - If OpenFn responds with error code → India will resend the next day. 
 2. This payload will contain any records created or modified since the last upload. 
 3. This payload will contain a “Lookup Table” catalog with a list of coded and corresponding string value definitions to inform how coded values can be translated and mapped to the global system (e.g., For the Abnormalities field, a “1” value should be re-labeled as → “No abnormalities” ). 
+4. OpenFn will perform additional data cleaning rules not performed in CAST - [see additional cleaning & mapping rules](https://docs.google.com/spreadsheets/d/1jyBogrByJRKBJDQMRNtQBxQDx51EHVTmJmAhOftzQX0/edit#gid=1495947484)
 
 ## Technical Overview
 How the OpenFn automation works...
-1. The CAST app will regurlarly send `clinic`, `patient`, and `visit` data to the OpenFn inbox as a JSON payload or `Message` ([see test example](https://github.com/OpenFn/miraclefeet-india/blob/master/sample_data/payload_new.json)). 
+1. The CAST app will regurlarly send `clinic`, `patient`, and `visit` data to the OpenFn inbox as a JSON payload or `Message` ([see test example](https://github.com/OpenFn/miraclefeet-india/blob/master/sample_data/payload_new.json) and [see original mapping specifications](https://docs.google.com/spreadsheets/d/1jyBogrByJRKBJDQMRNtQBxQDx51EHVTmJmAhOftzQX0/edit#gid=1500012711)). 
 2. On receipt, OpenFn will trigger the job [`1. Handle Bulk CAST Data`](https://www.openfn.org/projects/pde3z9/jobs/jyxzgm) to read and parse this payload into smaller batches of `clinic`, `patient`, and `visit` records to be uploaded to Salesforce. 
 3. These smaller batches will trigger the following jobs, which will perform additional data cleaning before uploading to Salesforce: 
 - [`2a. Upload Clinics`](https://www.openfn.org/projects/pde3z9/jobs/jv8xjp) job maps to Salesforce `Clinics` (`Account` object)

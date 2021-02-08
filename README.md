@@ -15,7 +15,7 @@ This OpenFn-powered integration automates a one-way data sync between the India 
 
 ## Technical Overview
 How the OpenFn automation works...
-1. The CAST app will regurlarly send `clinic`, `patient`, and `visit` data to the OpenFn inbox as a JSON payload or `Message`. 
+1. The CAST app will regurlarly send `clinic`, `patient`, and `visit` data to the OpenFn inbox as a JSON payload or `Message` ([see test example](https://github.com/OpenFn/miraclefeet-india/blob/master/sample_data/payload_new.json)). 
 2. On receipt, OpenFn will trigger the job [`1. Handle Bulk CAST Data`](https://www.openfn.org/projects/pde3z9/jobs/jyxzgm) to read and parse this payload into smaller batches of `clinic`, `patient`, and `visit` records to be uploaded to Salesforce. 
 3. These smaller batches will trigger the following jobs, which will perform additional data cleaning before uploading to Salesforce: 
 - [`2a. Upload Clinics`](https://www.openfn.org/projects/pde3z9/jobs/jv8xjp) job maps to Salesforce `Clinics` (`Account` object)

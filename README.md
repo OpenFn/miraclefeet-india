@@ -5,8 +5,12 @@ This integration is live on the OpenFn.org `MiracleFeet India` project.
 
 **Note: All commits `master` branch will be automatically published to OpenFn.**
 
+## Data Sharing
+[See here](https://miraclefeet.sharepoint.com/:w:/s/ProgramsTeam/EezJYaBrirpPnDyuHmaOhh0BC1fDNj5wY3aYthqArLS8uA?e=lDASs3) for the draft data sharing agreement. 
+[See here - TO UPDATE]() for the final data mapping specifications. 
+
 ## Solution Overview
-This OpenFn-powered integration automates a one-way data sync between the India CAST app and the global Salesforce system. **[See these slides](https://docs.google.com/presentation/d/14xP5Si9zW4GEvrB8OssRF_5xNjsKWa-KPdVrO7N1VPQ/edit?usp=sharing)** for an overview. 
+This OpenFn-powered integration automates a one-way data sync between the India CAST app and the global Salesforce system. **[See these slides](https://docs.google.com/presentation/d/14xP5Si9zW4GEvrB8OssRF_5xNjsKWa-KPdVrO7N1VPQ/edit?usp=sharing)** for an overview.
 
 ### Key Assumptions
 1. The CAST app has developed a custom webhook to schedule a payload of data to be forwarded to the OpenFn inbox. This automation will run every day. 

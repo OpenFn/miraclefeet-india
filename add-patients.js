@@ -40,6 +40,8 @@ alterState(state => {
 
       p.Gender__c = p.gciclubfoot__Gender__c;
       delete p.gciclubfoot__Gender__c;
+      
+      p.New_Patient_ID__c = p.CommCare_Case_ID__c; //new external Id
 
       //p['Account.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;
       //delete p.CAST_Locaion_ID__c;

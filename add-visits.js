@@ -72,7 +72,8 @@ alterState(state => {
       v['Patient__r.CommCare_Case_ID__c'] = v.Patient__c; //lookup parent patient
       delete v.Patient__c;
       delete v.CommCare_Case_ID__c;
-
+      
+      v.gciclubfootommcare_case_id__c = v.New_Visit_ID__c;
       v.gciclubfootommcare_case_id__c = v.Visit_ID__c; //reassign external Id
       delete v.Visit_ID__c;
 

@@ -21,7 +21,7 @@ alterState(state => {
     2: 'Dynamic Supination',
     3: 'Equinus',
     4: 'Forefoot Adduction',
-    5: 'Varus',
+    5: 'Heel Varus',
   };
 
   const miracleFeetBarSizeMap = {

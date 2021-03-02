@@ -56,7 +56,7 @@ alterState(state => {
 
   function searchBarSizeStringByRegex(str) {
     let regExp = /(\d+\s*mm$)/g;
-    let matches = str.trim().match(regExp);
+    let matches = str ? str.trim().match(regExp) : str;
     return matches ? matches[0] : 'Invalid';
   }
 

@@ -32,6 +32,9 @@ alterState(state => {
       p.Relapse_Type_Right_India__c = p.Relapse_Type_Right_Foot__c
         ? p.Relapse_Type_Right_Foot__c
         : '';
+        
+      p.Date_of_Tenotomy__c = p.Date_of_Tenotomy__c
+        ? new Date(p.Date_of_Tenotomy__c).toISOString() : ''; 
 
       //SF field = India field;
       //p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping

@@ -130,13 +130,15 @@ alterState(state => {
 
       let RelapseTypeTransformed = [];
 
-      const RelapseTypeRight = v.Relapse_Type_Right__c.split(',');
+      const RelapseTypeRight =  v.Relapse_Type_Right__c 
+        ? v.Relapse_Type_Right__c.split(',') : '';
       for (let type of RelapseTypeRight) {
         RelapseTypeTransformed.push(relapseTypeMap[type]);
       }
       v.Relapse_Type_Right__c = RelapseTypeTransformed.join('; ');
 
-      const RelapseTypeLeft = v.Relapse_Type_Left__c.split(',');
+      const RelapseTypeLeft = v.Relapse_Type_Left__c
+        ? v.Relapse_Type_Left__c.split(','): '';
       RelapseTypeTransformed = [];
       for (let type of RelapseTypeLeft) {
         RelapseTypeTransformed.push(relapseTypeMap[type]);

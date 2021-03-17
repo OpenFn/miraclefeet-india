@@ -7,10 +7,10 @@ alterState(state => {
     return R;
   }
 
-  const clinicSets = chunk(state.data.Clinic, 10);
-  const patientSets = chunk(state.data.Patient, 10);
-  const visitSets = chunk(state.data.Visit, 10);
-  const deletedVisitSets = chunk(state.data.VisitDeleted, 10);
+  const clinicSets = chunk(state.data.Clinic, 5);
+  const patientSets = chunk(state.data.Patient, 5);
+  const visitSets = chunk(state.data.Visit, 5);
+  const deletedVisitSets = chunk(state.data.VisitDeleted, 5);
 
   // Mapping LookupCode
   clinicSets.forEach(clin_sets => {

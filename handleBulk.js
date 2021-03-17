@@ -86,13 +86,32 @@ alterState(state => {
     })(state);
   };
 
+  // Splitting arrays in half =========================
+  const halfPatients = Math.ceil(patientSets.length / 2);
+  const halfVisits = Math.ceil(visitSets.length / 2);
+
+  const patientSets1 = patientSets.splice(0, halfPatients);
+  const patientSets2 = patientSets.splice(-halfPatients);
+
+  const visitSets1 = visitSets.splice(0, halfVisits);
+  const visitSets2 = visitSets.splice(-halfVisits);
+
+  // ==================================================
+
   async function makePosts() {
     return Promise.all([
       ...clinicSets.map(item => postClinics(item)),
-      ...patientSets.map(item => postPatients(item)),
-      ...visitSets.map(item => postVisits(item)),
+      ...patientSets1.map(item => postPatients(item)),
+      ...visitSets1.map(item => postVisits(item)),
       ...deletedVisitSets.map(item => postDeletedVisits(item)),
-    ]);
+    ]).then(() => {
+      console.log('starting here');
+      return Promise.all([
+        ...patientSets2.map(item => postPatients(item)),
+        ...visitSets2.map(item => postVisits(item)),
+      ]);
+    });
   }
+
   return makePosts();
 });

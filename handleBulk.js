@@ -7,10 +7,10 @@ alterState(state => {
     return R;
   }
 
-  const clinicSets = chunk(state.data.Clinic, 5);
-  const patientSets = chunk(state.data.Patient, 5);
-  const visitSets = chunk(state.data.Visit, 5);
-  const deletedVisitSets = chunk(state.data.VisitDeleted, 5);
+  const clinicSets = chunk(state.data.Clinic, 10);
+  const patientSets = chunk(state.data.Patient, 10);
+  const visitSets = chunk(state.data.Visit, 10);
+  const deletedVisitSets = chunk(state.data.VisitDeleted, 10);
 
   // Mapping LookupCode
   clinicSets.forEach(clin_sets => {
@@ -86,32 +86,13 @@ alterState(state => {
     })(state);
   };
 
-  // Splitting arrays in half =========================
-  const halfPatients = Math.ceil(patientSets.length / 2);
-  const halfVisits = Math.ceil(visitSets.length / 2);
-
-  const patientSets1 = patientSets.splice(0, halfPatients);
-  const patientSets2 = patientSets.splice(-halfPatients);
-
-  const visitSets1 = visitSets.splice(0, halfVisits);
-  const visitSets2 = visitSets.splice(-halfVisits);
-
-  // ==================================================
-
   async function makePosts() {
     return Promise.all([
       ...clinicSets.map(item => postClinics(item)),
-      ...patientSets1.map(item => postPatients(item)),
-      ...visitSets1.map(item => postVisits(item)),
+      ...patientSets.map(item => postPatients(item)),
+      ...visitSets.map(item => postVisits(item)),
       ...deletedVisitSets.map(item => postDeletedVisits(item)),
-    ]).then(() => {
-      console.log('starting here');
-      return Promise.all([
-        ...patientSets2.map(item => postPatients(item)),
-        ...visitSets2.map(item => postVisits(item)),
-      ]);
-    });
+    ]);
   }
-
   return makePosts();
 });

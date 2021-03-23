@@ -54,6 +54,8 @@ alterState(state => {
 
       //delete from upload; we can't update this in SF unless setting enabled?
       delete p.CreatedById;
+      //p.Last_Updated_by_India_CAST_App__c = new Date(date).toISOString();
+      //p.Upload_Source__c = 'India CAST App'; 
 
       return clean(p);
     }),

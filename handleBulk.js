@@ -7,10 +7,10 @@ alterState(state => {
     return R;
   }
 
-  const clinicSets = chunk(state.data.Clinic, 10);
-  const patientSets = chunk(state.data.Patient, 10);
-  const visitSets = chunk(state.data.Visit, 10);
-  const deletedVisitSets = chunk(state.data.VisitDeleted, 10);
+  var clinicSets = chunk(state.data.Clinic, 10);
+  var patientSets = chunk(state.data.Patient, 10);
+  var visitSets = chunk(state.data.Visit, 10);
+  var deletedVisitSets = chunk(state.data.VisitDeleted, 10);
 
   // Mapping LookupCode
   clinicSets.forEach(clin_sets => {
@@ -88,10 +88,10 @@ alterState(state => {
 
   async function makePosts() {
     return Promise.all([
-      ...clinicSets.map(item => postClinics(item)),
-      ...patientSets.map(item => postPatients(item)),
-      ...visitSets.map(item => postVisits(item)),
-      ...deletedVisitSets.map(item => postDeletedVisits(item)),
+      clinicSets.forEach(item => postClinics(item)),
+      patientSets.forEach(item => postPatients(item)),
+      visitSets.forEach(item => postVisits(item)),
+      deletedVisitSets.forEach(item => postDeletedVisits(item)),
     ]);
   }
   return makePosts();

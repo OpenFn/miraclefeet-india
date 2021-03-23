@@ -23,6 +23,7 @@ alterState(state => {
       p.Age_Months_Started_Treatment__c = dayDifference / 30.4;
 
       p.Last_Updated_by_India_CAST_App__c = new Date().toISOString();
+      p.Upload_Source__c = 'India CAST App'; 
 
       p.Country__c = 'India'; //default Country
 
@@ -54,8 +55,6 @@ alterState(state => {
 
       //delete from upload; we can't update this in SF unless setting enabled?
       delete p.CreatedById;
-      //p.Last_Updated_by_India_CAST_App__c = new Date(date).toISOString();
-      //p.Upload_Source__c = 'India CAST App'; 
 
       return clean(p);
     }),

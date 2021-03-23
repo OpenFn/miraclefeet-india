@@ -67,6 +67,7 @@ alterState(state => {
       delete v.LastModifiedById;
       
       v.Last_Updated_by_India_CAST_App__c = new Date().toISOString();
+      v.Upload_Source__c = 'India CAST App';
 
       //Mappings India provided need to be re-mapped to correct Salesforce field
       v['Patient__r.CommCare_Case_ID__c'] = v.Patient__c; //lookup parent patient

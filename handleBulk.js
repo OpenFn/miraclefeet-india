@@ -91,17 +91,17 @@ alterState(async state => {
     })(state);
   };
 
-  for (const clinics of clinicSets) {
-    await postClinics(clinics);
+  for (const clinicSet of clinicSets) {
+    await postClinics(clinicSet);
   }
-  for (const patients of patientSets) {
-    await postPatients(patients);
+  for (const patientSet of patientSets) {
+    await postPatients(patientSet);
   }
-  for (const visits of visitSets) {
-    await postVisits(visits);
+  for (const visitSet of visitSets) {
+    await postVisits(visitSet);
   }
-  for (const deletedVisits of deletedVisitSets) {
-    await postDeletedVisits(deletedVisits);
+  for (const deletedVisitSet of deletedVisitSets) {
+    await postDeletedVisits(deletedVisitSet);
   }
 
   console.log(`Made ${count} posts to OpenFn.`);
@@ -114,6 +114,6 @@ alterState(async state => {
   //   ...visitSets.map(arrayOfVisits => postVisits(arrayOfVisits)),
   //   ...deletedVisitSets.map(deletedVisits => postDeletedVisits(deletedVisits)),
   // ]).then(() => {
-  //   console.log("This shows up after we're done.", count);
+  //   console.log(`Made ${count} posts to OpenFn.`);
   // });
 });

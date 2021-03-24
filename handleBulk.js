@@ -1,4 +1,4 @@
-alterState(state => {
+alterState(async state => {
   console.log('Received bulk payload from MF India, preparing for Salesforce.');
   function chunk(arr, chunkSize) {
     var R = [];
@@ -11,6 +11,7 @@ alterState(state => {
   var patientSets = chunk(state.data.Patient, 10);
   var visitSets = chunk(state.data.Visit, 10);
   var deletedVisitSets = chunk(state.data.VisitDeleted, 10);
+  let count = 0;
 
   // Mapping LookupCode
   clinicSets.forEach(clin_sets => {
@@ -62,37 +63,57 @@ alterState(state => {
   });
   // Mapping LookupCode -- End
 
-  const postClinics = async cs => {
+  const postClinics = cs => {
+    count = count + 1;
     return post(state.configuration.inboxUrl, {
       body: { clinics: cs },
     })(state);
   };
 
-  const postPatients = async ps => {
+  const postPatients = ps => {
+    count = count + 1;
     return post(state.configuration.inboxUrl, {
       body: { patients: ps },
     })(state);
   };
 
-  const postVisits = async vs => {
+  const postVisits = vs => {
+    count = count + 1;
     return post(state.configuration.inboxUrl, {
       body: { visits: vs },
     })(state);
   };
 
-  const postDeletedVisits = async dvs => {
+  const postDeletedVisits = dvs => {
+    count = count + 1;
     return post(state.configuration.inboxUrl, {
       body: { deletedVisits: dvs },
     })(state);
   };
 
-  async function makePosts() {
-    return Promise.all([
-      clinicSets.forEach(item => postClinics(item)),
-      patientSets.forEach(item => postPatients(item)),
-      visitSets.forEach(item => postVisits(item)),
-      deletedVisitSets.forEach(item => postDeletedVisits(item)),
-    ]);
+  for (const clinics in clinicSets) {
+    await postClinics(clinics);
   }
-  return makePosts();
+  for (const patients in patientSets) {
+    await postPatients(patients);
+  }
+  for (const visits in visitSets) {
+    await postVisits(visits);
+  }
+  for (const deletedVisits in deletedVisitSets) {
+    await postDeletedVisits(deletedVisits);
+  }
+
+  console.log(`Made ${count} posts to OpenFn.`);
+
+  return { data: {}, references: [], countOfPosts: count };
+
+  // return Promise.all([
+  //   ...clinicSets.map(arrayOfClinics => postClinics(arrayOfClinics)),
+  //   ...patientSets.map(arrayOfPatients => postPatients(arrayOfPatients)),
+  //   ...visitSets.map(arrayOfVisits => postVisits(arrayOfVisits)),
+  //   ...deletedVisitSets.map(deletedVisits => postDeletedVisits(deletedVisits)),
+  // ]).then(() => {
+  //   console.log("This shows up after we're done.", count);
+  // });
 });

@@ -13,54 +13,23 @@ alterState(async state => {
   var deletedVisitSets = chunk(state.data.VisitDeleted, 10);
   let count = 0;
 
+  function addLookups(arrayOfSets) {
+    arrayOfSets.forEach(set => {
+      Object.keys(set).forEach(key => {
+        state.data.LookupTable.forEach(code => {
+          if (key === code.AppFieldName && set[key] == code.LookupCode) {
+            set[key] = code.Description;
+          }
+        });
+      });
+    });
+  }
+
   // Mapping LookupCode
-  clinicSets.forEach(clin_sets => {
-    clin_sets.forEach(set => {
-      Object.keys(set).forEach(key => {
-        state.data.LookupTable.forEach(code => {
-          if (key === code.AppFieldName && set[key] == code.LookupCode) {
-            set[key] = code.Description;
-          }
-        });
-      });
-    });
-  });
-
-  patientSets.forEach(patient_sets => {
-    patient_sets.forEach(set => {
-      Object.keys(set).forEach(key => {
-        state.data.LookupTable.forEach(code => {
-          if (key === code.AppFieldName && set[key] == code.LookupCode) {
-            set[key] = code.Description;
-          }
-        });
-      });
-    });
-  });
-
-  visitSets.forEach(visit_sets => {
-    visit_sets.forEach(set => {
-      Object.keys(set).forEach(key => {
-        state.data.LookupTable.forEach(code => {
-          if (key === code.AppFieldName && set[key] == code.LookupCode) {
-            set[key] = code.Description;
-          }
-        });
-      });
-    });
-  });
-
-  deletedVisitSets.forEach(delvisit_sets => {
-    delvisit_sets.forEach(set => {
-      Object.keys(set).forEach(key => {
-        state.data.LookupTable.forEach(code => {
-          if (key === code.AppFieldName && set[key] == code.LookupCode) {
-            set[key] = code.Description;
-          }
-        });
-      });
-    });
-  });
+  clinicSets.forEach(set => addLookups(set));
+  visitSets.forEach(set => addLookups(set));
+  deletedVisitSets.forEach(set => addLookups(set));
+  patientSets.forEach(set => addLookups(set));
   // Mapping LookupCode -- End
 
   const postClinics = cs => {

@@ -91,16 +91,16 @@ alterState(async state => {
     })(state);
   };
 
-  for (const clinics in clinicSets) {
+  for (const clinics of clinicSets) {
     await postClinics(clinics);
   }
-  for (const patients in patientSets) {
+  for (const patients of patientSets) {
     await postPatients(patients);
   }
-  for (const visits in visitSets) {
+  for (const visits of visitSets) {
     await postVisits(visits);
   }
-  for (const deletedVisits in deletedVisitSets) {
+  for (const deletedVisits of deletedVisitSets) {
     await postDeletedVisits(deletedVisits);
   }
 

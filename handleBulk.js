@@ -13,6 +13,11 @@ alterState(async state => {
   var deletedVisitSets = chunk(state.data.VisitDeleted, 10);
   let count = 0;
 
+  let countClinics = 0;
+  let countPatients = 0;
+  let countVisits = 0;
+  let countDeletedVisits = 0;
+
   function addLookups(arrayOfSets) {
     arrayOfSets.forEach(set => {
       Object.keys(set).forEach(key => {
@@ -34,6 +39,7 @@ alterState(async state => {
 
   const postClinics = cs => {
     count = count + 1;
+    countClinics += cs.length;
     return post(state.configuration.inboxUrl, {
       body: { clinics: cs },
     })(state);
@@ -41,6 +47,7 @@ alterState(async state => {
 
   const postPatients = ps => {
     count = count + 1;
+    countPatients += ps.length;
     return post(state.configuration.inboxUrl, {
       body: { patients: ps },
     })(state);
@@ -48,6 +55,7 @@ alterState(async state => {
 
   const postVisits = vs => {
     count = count + 1;
+    countVisits += vs.length;
     return post(state.configuration.inboxUrl, {
       body: { visits: vs },
     })(state);
@@ -55,6 +63,7 @@ alterState(async state => {
 
   const postDeletedVisits = dvs => {
     count = count + 1;
+    countDeletedVisits += dvs.length;
     return post(state.configuration.inboxUrl, {
       body: { deletedVisits: dvs },
     })(state);
@@ -74,6 +83,10 @@ alterState(async state => {
   }
 
   console.log(`Made ${count} posts to OpenFn.`);
+  console.log(`Posted ${countClinics} clinic sets to OpenFn.`);
+  console.log(`Posted ${countVisits} visit sets to OpenFn.`);
+  console.log(`Posted ${countPatients} patients sets to OpenFn.`);
+  console.log(`Posted ${countDeletedVisits} deleted visits sets to OpenFn.`);
 
   return { data: {}, references: [], countOfPosts: count };
 

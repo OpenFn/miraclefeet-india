@@ -23,7 +23,7 @@ alterState(state => {
       p.Age_Months_Started_Treatment__c = dayDifference / 30.4;
 
       p.Last_Updated_by_India_CAST_App__c = new Date().toISOString();
-      p.Upload_Source__c = 'India CAST App'; 
+      p.Upload_Source__c = 'India CAST App';
 
       p.Country__c = 'India'; //default Country
 
@@ -33,10 +33,16 @@ alterState(state => {
       p.Relapse_Type_Right_India__c = p.Relapse_Type_Right_Foot__c
         ? p.Relapse_Type_Right_Foot__c
         : '';
-      
-      //TODO: Convert Date_of_Tetonomy__c when state is in format '24-10-2019'
-      /*p.Date_of_Tenotomy__c = p.Date_of_Tenotomy__c
-        ? new Date(p.Date_of_Tenotomy__c).toISOString() : ''; */
+
+      if (p.Date_of_Tenotomy__c) {
+        const dateParts = p.Date_of_Tenotomy__c.split('-');
+        const standardizedDate =
+          dateParts[0].length == 4
+            ? p.Date_of_Tenotomy__c
+            : `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+  
+        p.Date_of_Tenotomy__c = new Date(standardizedDate).toISOString();
+      }
 
       //SF field = India field;
       //p.gciclubfoot_CAST_Patient_ID__c = p.CAST_Patient_ID__c; //confirm mapping
@@ -45,7 +51,7 @@ alterState(state => {
 
       p.Gender__c = p.gciclubfoot__Gender__c;
       delete p.gciclubfoot__Gender__c;
-      
+
       p.New_Patient_ID__c = p.CommCare_Case_ID__c; //new external Id
 
       //p['Account.CAST_Location_ID__c'] = p.CAST_Locaion_ID__c;

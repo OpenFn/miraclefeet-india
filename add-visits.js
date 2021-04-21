@@ -129,6 +129,16 @@ alterState(state => {
           ? 'No'
           : '';
 
+      if (v.Date_of_Tenotomy__c) {
+        const dateParts = v.Date_of_Tenotomy__c.split('-');
+        const standardizedDate =
+          dateParts[0].length == 4
+            ? v.Date_of_Tenotomy__c
+            : `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+
+        v.Date_of_Tenotomy__c = new Date(standardizedDate).toISOString();
+      }
+
       let RelapseTypeTransformed = [];
 
       const RelapseTypeRight =  v.Relapse_Type_Right__c 

@@ -1,4 +1,4 @@
-alterState(state => {
+alterState(async state => {
   const { Patient, Visit, Clinic, VisitDeleted, LookupTable } = state.data;
 
   const chunk = (arr, chunkSize) => {
@@ -50,17 +50,17 @@ alterState(state => {
     countInbox++;
     console.log(`${countInbox} request to inbox`);
 
-    return post(state.configuration.inboxUrl, { body: data })(state);
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    await post(state.configuration.inboxUrl, { body: data })(state);
   };
 
-  async function makePost() {
-    console.log('Posting to Openfn inbox');
-    return Promise.all([
-      ...patientChunks.map(item => postToInbox(item)),
-      ...visitChunks.map(item => postToInbox(item)),
-    ]);
+  for (const patient of patientChunks) {
+    await postToInbox(patient);
   }
-  return makePost();
 
-  //   return { ...state, patientChunks, visitChunks };
+  for (const visit of visitChunks) {
+    await postToInbox(visit);
+  }
+
+  return { ...state, patientChunks, visitChunks };
 });

@@ -22,8 +22,19 @@ alterState(async state => {
     arrayOfSets.forEach(set => {
       Object.keys(set).forEach(key => {
         state.data.LookupTable.forEach(code => {
-          if (key === code.AppFieldName && set[key] == code.LookupCode) {
-            set[key] = code.Description;
+          let keys = [];
+          if (typeof set[key] === 'string') keys = set[key].split(',');
+          if (keys.length > 1) {
+            keys.forEach((k, i) => {
+              if (key === code.AppFieldName && k == code.LookupCode) {
+                keys[i] = code.Description;
+                set[key] = keys.join(',');
+              }
+            });
+          } else {
+            if (key === code.AppFieldName && set[key] == code.LookupCode) {
+              set[key] = code.Description;
+            }
           }
         });
       });

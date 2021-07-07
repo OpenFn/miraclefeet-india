@@ -18,6 +18,8 @@ alterState(async state => {
   let countVisits = 0;
   let countDeletedVisits = 0;
 
+  const multiStrings = [];
+
   function addLookups(arrayOfSets) {
     arrayOfSets.forEach(set => {
       Object.keys(set).forEach(key => {
@@ -25,6 +27,7 @@ alterState(async state => {
           let keys = [];
           if (typeof set[key] === 'string') keys = set[key].split(',');
           if (keys.length > 1) {
+            if (!multiStrings.includes(key)) multiStrings.push(key);
             keys.forEach((k, i) => {
               if (key === code.AppFieldName && k == code.LookupCode) {
                 keys[i] = code.Description;
@@ -37,6 +40,9 @@ alterState(async state => {
             }
           }
         });
+      });
+      multiStrings.forEach(key => {
+        set[key] = set[key].replace(/\,/g, ';');
       });
     });
   }

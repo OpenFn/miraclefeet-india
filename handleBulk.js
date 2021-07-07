@@ -44,7 +44,7 @@ alterState(async state => {
         });
       });
       multiStrings.forEach(key => {
-        set[key] = set[key].replace(/\,/g, ';');
+        if (set[key]) set[key] = set[key].replace(/\,/g, ';');
       });
     });
   }

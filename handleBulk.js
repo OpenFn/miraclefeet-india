@@ -27,13 +27,15 @@ alterState(async state => {
           let keys = [];
           if (typeof set[key] === 'string') keys = set[key].split(',');
           if (keys.length > 1) {
-            if (!multiStrings.includes(key)) multiStrings.push(key);
-            keys.forEach((k, i) => {
-              if (key === code.AppFieldName && k == code.LookupCode) {
-                keys[i] = code.Description;
-                set[key] = keys.join(',');
-              }
-            });
+            if (isNaN(keys[0]) === false) {
+              if (!multiStrings.includes(key)) multiStrings.push(key);
+              keys.forEach((k, i) => {
+                if (key === code.AppFieldName && k == code.LookupCode) {
+                  keys[i] = code.Description;
+                  set[key] = keys.join(',');
+                }
+              });
+            }
           } else {
             if (key === code.AppFieldName && set[key] == code.LookupCode) {
               set[key] = code.Description;

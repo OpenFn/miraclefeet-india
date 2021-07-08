@@ -23,16 +23,19 @@ alterState(async state => {
   function addLookups(arrayOfSets) {
     arrayOfSets.forEach(set => {
       Object.keys(set).forEach(key => {
+        let keys = [];
+        let newKeys = [];
+        if (typeof set[key] === 'string') keys = set[key].split(',');
+        newKeys = Array.from(keys);
+
         state.data.LookupTable.forEach(code => {
-          let keys = [];
-          if (typeof set[key] === 'string') keys = set[key].split(',');
           if (keys.length > 1) {
             if (isNaN(keys[0]) === false) {
               if (!multiStrings.includes(key)) multiStrings.push(key);
               keys.forEach((k, i) => {
                 if (key === code.AppFieldName && k == code.LookupCode) {
-                  keys[i] = code.Description;
-                  set[key] = keys.join(',');
+                  newKeys[i] = code.Description;
+                  set[key] = newKeys.join(',');
                 }
               });
             }

@@ -159,6 +159,9 @@ alterState(state => {
       v.MiracleFeet_Bar_Size__c = getBarSize(
         searchBarSizeStringByRegex(v.MiracleFeet_Bar_Size__c)
       );
+      
+      v.First_Brace__c = (v.First_Brace__c==='1') ? true : 
+        (v.First_Brace__c==='2') ? false : undefined; 
       // ========================================================
 
       return clean(v);
